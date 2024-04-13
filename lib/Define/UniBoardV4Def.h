@@ -1,5 +1,7 @@
-// Based on
-// https://raw.githubusercontent.com/Unimakers/CDR-2024-FIRMWARE/main/CDR2024%20BASE/lib/Define/UniBoardDef.h
+/*
+    Based on https://raw.githubusercontent.com/Unimakers/CDR-2024-FIRMWARE/main/CDR2024%20BASE/lib/Define/UniBoardDef.h
+    Updated 13/04/2024
+*/
 
 #pragma once
 
@@ -10,31 +12,31 @@ namespace PIN
         constexpr int
         TIR = 6,
         btn1 = 7,
-        btn2 = 25;
+        btn2 = 48;
     } // namespace Inputs
 
     namespace Steppers
     {
         constexpr int
-            STEP1 = 18,
-            STEP2 = 16,
-            STEP3 = 21,
-            STEP4 = 23,
+            STEP1 = 10,
+            STEP2 = 46,
+            STEP3 = 13,
+            STEP4 = 21,
 
-            EN = 19,
+            EN = 11,
 
-            DIR1 = 17,
-            DIR2 = 15,
-            DIR3 = 20,
-            DIR4 = 22;  
+            DIR1 = 9,
+            DIR2 = 3,
+            DIR3 = 12,
+            DIR4 = 14;  
     } // namespace Steppers
     
     namespace Lidar
     {
         constexpr int
-            LIDAR_TX = 11,
-            LIDAR_RX = 10,
-            LIDAR_PWM = 12;
+            LIDAR_TX = 18,
+            LIDAR_RX = 17,
+            LIDAR_PWM = 8;
     } // namespace Lidar
 
     namespace I2C
@@ -47,14 +49,14 @@ namespace PIN
     namespace Nappe
     {
         constexpr int
-            NAPPE1 = 26,
-			NAPPE2 = 33,
-			NAPPE3 = 34,
-			NAPPE4 = 35,
-			NAPPE5 = 32,
-			NAPPE6 = 31,
-			NAPPE7 = 38,
-			NAPPE8 = 39;
+            NAPPE1 = 45,
+			NAPPE2 = 40,
+			NAPPE3 = 41,
+			NAPPE4 = 42,
+			NAPPE5 = 39,
+			NAPPE6 = 38,
+			NAPPE7 = 1,
+			NAPPE8 = 2;
     } // namespace Nappe
     
 } // namespace PIN
