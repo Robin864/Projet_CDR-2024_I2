@@ -7,6 +7,7 @@ Enemy::Enemy() : captor(Serial1)
     captor.init();
     captor.enableFiltering();
     captor.setDistanceRange(150, 500);
+    captor.setIntensityThreshold(250);
 }
 
 void Enemy::setDetectionArea(float angle){
