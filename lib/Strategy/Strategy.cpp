@@ -36,23 +36,23 @@ void Strategy::game()
     move.moveToXYAndRun(0, -210); // Push the plants to align it
     pince.grab(1); // Grab all the plants of the group using left pince
 
-    move.moveToXYAndRun(600, 300); // Move to the second plants group
+    move.moveToXYAndRun(600, 350); // Move to the second plants group
     move.turnOver(180); // Place the pince in front of the plants
-    move.moveToXYAndRun(0, 250); // Push the plant to align it  
+    move.moveToXYAndRun(0, 300); // Push the plant to align it  
     pince.grab(0);
+
+    move.moveToXYAndRun(800, 0);
     move.turnOver(-90);
-    move.moveToAndRun(200, 0);
-    pince.ungrab(0); // Ungrab plants in the basket
-    
+    move.moveToXYAndRun(0, -400);
     pince.ungrab(1); // Ungrab plants in the basket
-    move.moveToXYAndRun(850, 700); // Reach the second basket
-    pince.ungrab(0); // Ungrab plants in the basket
 
-    move.moveToXYAndRun(500, 800); // Go to the third group of plants
-    pince.grab(0); // Grab it
+    move.moveToXYAndRun(0, 150);
+    move.turnOver(-90);
+    move.moveToXYAndRun(2000, 1200);
+    pince.ungrab(0);
 
-    move.moveToXYAndRun(1500, 500); // Go back home
-    pince.ungrab(0); // Ungrab the last plants
+
+
 }
 
 void Strategy::calibration()

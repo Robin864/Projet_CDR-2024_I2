@@ -8,8 +8,8 @@
 #include "Position.h"
 #include "Enemy.h"
 
-const double ACCEL = 200*1.5; // Temp
-const double SPEED = 400*1.5; // Temp
+const double ACCEL = 200*2.5; // Temp
+const double SPEED = 400*2.5; // Temp
 const int uStep = 8; // Microstepping
 const float wtx = 1.4705; // Wheel turn compensation coefficient
 const float wty = 1.4705 + 0.26; // Wheel turn compensation coefficient
