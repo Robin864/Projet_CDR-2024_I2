@@ -21,6 +21,8 @@ void Enemy::setDetectionArea(float angle){
     float maxAngle = angle - 135 + rangeAngle;
 
     captor.setAngleRange(minAngle, maxAngle); // Default detection area
+    THROW(minAngle)
+    THROW(maxAngle)
 }
 
 bool Enemy::isDetected(float angle)
@@ -33,7 +35,10 @@ bool Enemy::isDetected(float angle)
         THROW(points)
 
         if (points == 0)
+        {
+            //delay(1000);
             return false;
+        }
         else
             return true;
     }

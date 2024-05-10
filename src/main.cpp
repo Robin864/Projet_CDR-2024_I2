@@ -37,6 +37,7 @@ void setup()
 
     // initState = digitalRead(INIT_PIN);
 
+
     strat.teamSelection();
     move.setup();
     pince.setup();
@@ -60,13 +61,15 @@ void loop()
     //     Serial.println("Button pushed");
     // }
 
-    // if (digitalRead(TIR_PIN)) // Si terette non présente
-    // {
-    //     Serial.println("TIRETTE");
-    //     move.moveTo(270 * DEG_TO_RAD, 2000);
-    //     move.moveToAndRun(270 * DEG_TO_RAD, 2000);
-    // }
+    Serial.println("Wait tirette");
+    while (!digitalRead(TIR_PIN)) // Wait Tirette release
+        delay(1);
 
+    Serial.println("Tirette pulled");
+    // strat.homologation();
+    Serial.println("Pinces...");
+    strat.game();
+    Serial.println("Pinces done...");
     // delay(10000);
 
     /*
@@ -76,8 +79,6 @@ void loop()
     }/**/
 
     // strat.calibration();
-
-    strat.homologation();
 
     // if (!digitalRead(TIR_PIN) && initialized)
     // {

@@ -20,16 +20,17 @@ public:
     void movePanels();
     void goHome();
     void homologation();
+    void grabPlants();
 
-// //Singleton
-// public:
-//     static inline Strategy& instance(){return m_instance;}
-//     Strategy(const Strategy&) = delete;
-//     Strategy(Strategy&&) = delete;
-//     Strategy& operator=(const Strategy&) = delete;
-//     Strategy& operator=(Strategy&&) = delete;
-// private:
-//     static Strategy m_instance;
+    // //Singleton
+    // public:
+    //     static inline Strategy& instance(){return m_instance;}
+    //     Strategy(const Strategy&) = delete;
+    //     Strategy(Strategy&&) = delete;
+    //     Strategy& operator=(const Strategy&) = delete;
+    //     Strategy& operator=(Strategy&&) = delete;
+    // private:
+    //     static Strategy m_instance;
 };
 
 // extern Movement& strat;

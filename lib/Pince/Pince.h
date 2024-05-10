@@ -22,15 +22,20 @@ const int SERVO_RP = 7; // Servo Right Pliers
 class Pince
 {
 private:
-    Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver(0x40, Wire);
+    Adafruit_PWMServoDriver *pwm = nullptr;
 
     void opening(int side);
     void close(int side);
     void up(int side);
     void down(int side);
+    void downJard(int side);
 
 public:
     Pince(){};
+    ~Pince(){
+        if(pwm)delete pwm;
+    };
+
     bool isGrabed[2] = {false, false}; //[0-Grab Right, 1-Grab Left]
     // bool isMoving[4] = {false, false, false, false}; //[0-LB, 1-LP, 2-RB, 3-RP]
 

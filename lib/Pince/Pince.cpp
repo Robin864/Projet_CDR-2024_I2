@@ -7,9 +7,11 @@ Pince& pince = Pince::instance();
 
 void Pince::setup()
 {
-    pwm.begin();
-    pwm.setOscillatorFrequency(25000000);
-    pwm.setPWMFreq(SERVO_FREQ);
+    Wire.begin(PIN::I2C::SDA, PIN::I2C::SCL);
+    pwm = new Adafruit_PWMServoDriver(0x40, Wire);
+    pwm->begin();
+    pwm->setOscillatorFrequency(25000000);
+    pwm->setPWMFreq(SERVO_FREQ);
 }
 
 //Etat ouvert
@@ -17,12 +19,12 @@ void Pince::opening(int side) // Side can be right (0) or left (1)
 {       
     if(side == 0) // Right
     {
-        pwm.setPWM(SERVO_RP, 0, 400); // Faire tourner le servo 
+        pwm->setPWM(SERVO_RP, 0, 400); // Faire tourner le servo 
         delay(500);
     }
     else if(side == 1) // Left
     {
-        pwm.setPWM(SERVO_LP, 0, 370); // Faire tourner le servo
+        pwm->setPWM(SERVO_LP, 0, 370); // Faire tourner le servo
         delay(500);
     }
 }
@@ -34,12 +36,12 @@ void Pince::close(int side)
 {
     if(side == 0) //Right
     {
-        pwm.setPWM(SERVO_RP, 0, 150);
+        pwm->setPWM(SERVO_RP, 0, 150);
         delay(500);
     }
     else if(side == 1) //Left
     {
-         pwm.setPWM(SERVO_LP, 0, 98);
+         pwm->setPWM(SERVO_LP, 0, 98);
          delay(500);
     }
 }
@@ -48,12 +50,26 @@ void Pince::up(int side)
 {
     if(side == 0) //Right
     {
-        pwm.setPWM(SERVO_RB, 0, 185);
+        pwm->setPWM(SERVO_RB, 0, 195);
         delay(500);
     }
     else if(side == 1) //Left
     {
-         pwm.setPWM(SERVO_LB, 0, 150);
+         pwm->setPWM(SERVO_LB, 0, 170);
+         delay(500);
+    }
+}
+
+void Pince::downJard(int side)
+{
+    if(side == 0) //Right
+    {
+        pwm->setPWM(SERVO_RB, 0, 350);
+        delay(500);
+    }
+    else if(side == 1) //Left
+    {
+         pwm->setPWM(SERVO_LB, 0, 280);
          delay(500);
     }
 }
@@ -63,12 +79,12 @@ void Pince::down(int side)
 
     if(side == 0) // Right
     {
-        pwm.setPWM(SERVO_RB, 0, 380);
+        pwm->setPWM(SERVO_RB, 0, 400);
         delay(500);
     }
     else if(side == 1) // Left
     {
-        pwm.setPWM(SERVO_LB, 0, 330);
+        pwm->setPWM(SERVO_LB, 0, 330);
         delay(500);
     }
 }
@@ -109,7 +125,7 @@ void Pince::ungrab(int side)
 {
 
     if (side == 0){ //RIGHT
-        down(0);
+        downJard(0);
         delay(500);       
         opening(0);
         delay(500); 
@@ -121,7 +137,7 @@ void Pince::ungrab(int side)
     }
 
     else if (side == 1){ //LEFT
-        down(1);
+        downJard(1);
         delay(500); 
         opening(1);
         delay(500);  

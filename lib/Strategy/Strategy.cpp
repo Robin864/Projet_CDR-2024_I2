@@ -30,50 +30,29 @@ void Strategy::initialization()
 
 void Strategy::game()
 {
-    // Position to first plants
-    move.moveToAndRun(135 * DEG_TO_RAD, 700);
-    
-    // if (!pince.isGrabed[0])
+    move.moveToXYAndRun(250, 250); //
+    move.turnOver(-90); // Place the pince RIGHT in front of the plants
+    move.moveToXYAndRun(350, -315); // Go to plant
+    move.moveToXYAndRun(0, -210); // Push the plants to align it
+    pince.grab(1); // Grab all the plants of the group using left pince
+
+    move.moveToXYAndRun(600, 300); // Move to the second plants group
+    move.turnOver(180); // Place the pince in front of the plants
+    move.moveToXYAndRun(0, 250); // Push the plant to align it  
     pince.grab(0);
-
-    // Position to second plants
-    move.moveToAndRun(0, 0);
+    move.turnOver(-90);
+    move.moveToAndRun(200, 0);
+    pince.ungrab(0); // Ungrab plants in the basket
     
-    // if (!pince.isGrabed[1])
-    pince.grab(1);
+    pince.ungrab(1); // Ungrab plants in the basket
+    move.moveToXYAndRun(850, 700); // Reach the second basket
+    pince.ungrab(0); // Ungrab plants in the basket
 
-    // Drop the plants in the Jardinière
-    goNearPlantsBasket();
-    pushPots();
-    
-    pince.ungrab(1); // First ungrab the left side
+    move.moveToXYAndRun(500, 800); // Go to the third group of plants
+    pince.grab(0); // Grab it
 
-
-    pince.ungrab(0); // And ungrab the right side
-
-    // Position to third plants
-    move.moveToAndRun(0, 0);
-    pince.grab(1);
-
-
-    // Position to third plants
-    move.moveToAndRun(0, 0);
-    pince.grab(0);
-
-    // Drop the plants in the Jardinière
-    goNearPlantsBasket();
-    pushPots();
-    pince.ungrab(0);
-
-
-    pince.ungrab(1);
-
-    // Start panels process
-    goToPanelsWall();
-
-    movePanels();
-
-    goHome();
+    move.moveToXYAndRun(1500, 500); // Go back home
+    pince.ungrab(0); // Ungrab the last plants
 }
 
 void Strategy::calibration()
@@ -133,16 +112,22 @@ void Strategy::homologation()
         
     }
     else if(team == 'b'){
-        move.moveToXYAndRun(680, 715-200); // Go to plants
-        move.moveToXYAndRun(20, 0); // Push the plants
-        //pince.grab(0);
+        move.moveToXYAndRun(250, 250); // Go to plants
+        move.turnOver(-90);
+        move.moveToXYAndRun(1300, 0); // Push the plants
+        // pince.grab(0);
 
-        move.turnOver(); // Must be corrected
-        while(move.run());
+        // move.turnOver(90); // Must be corrected
+        // // while(move.run());
 
-        move.moveToXYAndRun(336, 15); // Go to the wall
-        // pince.ungrab(0);
-        move.moveToXYAndRun(10, 0);
-        move.moveToXYAndRun(0, -715); // Go to home2
+        // move.moveToXYAndRun(336, 15); // Go to the wall
+        // // pince.ungrab(0);
+        // move.moveToXYAndRun(10, 0);
+        // move.moveToXYAndRun(0, -715); // Go to home2
     }
+}
+
+void Strategy::grabPlants()
+{
+    pince.grab(0);
 }

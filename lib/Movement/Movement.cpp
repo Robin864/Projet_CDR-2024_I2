@@ -135,12 +135,24 @@ void Movement::moveToAndRun(float angle, float distance)
 {
     
     moveTo(angle, distance);
-    while(run()){
-        if(enemy.isDetected(angle)){
+
+    bool isRunning = true;
+    bool isPaused = false;
+    while(isRunning){
+        if(enemy.isDetected(angle * RAD_TO_DEG)){
             stop();
+            isPaused = true;
+        }else{
+            if(isPaused){
+                fl.setMaxSpeed(SPEED);
+                fr.setMaxSpeed(SPEED);
+                rl.setMaxSpeed(SPEED);
+                rr.setMaxSpeed(SPEED);
+                isPaused = false;
+            }
+            isRunning = run();
         }
     }
-
 
     /*
     do {
@@ -171,16 +183,12 @@ void Movement::stop()
     rr.setMaxSpeed(0);
 
     delay(1000);
-
-    fl.setMaxSpeed(SPEED);
-    fr.setMaxSpeed(SPEED);
-    rl.setMaxSpeed(SPEED);
-    rr.setMaxSpeed(SPEED);
 }
 
-void Movement::turnOver()
+void Movement::turnOver(float angle)
 {
-    halfCicle = PI * 230; // distance in mm the opposite wheels must run through
+    // distance in mm the opposite wheels must run through
+    halfCicle = PI * (angle * 1.01); // 180 deg =~ 182.5
 
     // Speed
     fl.setMaxSpeed(SPEED);
@@ -205,6 +213,8 @@ void Movement::turnOver()
     fr.move(halfCicle * uStep);
     rl.move(-halfCicle * uStep);
     rr.move(halfCicle * uStep);
+
+    while(run()) {}
 }
 
 bool Movement::isArrived()
