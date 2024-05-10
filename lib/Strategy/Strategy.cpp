@@ -48,7 +48,7 @@ void Strategy::game()
 
     move.moveToXYAndRun(0, 150);
     move.turnOver(-90);
-    move.moveToXYAndRun(2000, 1200);
+    move.moveToXYAndRun(1800, 900);
     pince.ungrab(0);
 
 
