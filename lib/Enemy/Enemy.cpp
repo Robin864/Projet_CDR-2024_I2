@@ -6,8 +6,8 @@ Enemy::Enemy() : captor(Serial1)
     Serial1.begin(230400, SERIAL_8N1, PIN::Lidar::LIDAR_TX);
     captor.init();
     captor.enableFiltering();
-    captor.setDistanceRange(150, 500);
-    captor.setIntensityThreshold(250);
+    captor.setDistanceRange(150, 400);
+    captor.setIntensityThreshold(225);
 }
 
 void Enemy::setDetectionArea(float angle){

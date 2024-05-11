@@ -50,12 +50,12 @@ void Pince::up(int side)
 {
     if(side == 0) //Right
     {
-        pwm->setPWM(SERVO_RB, 0, 195);
+        pwm->setPWM(SERVO_RB, 0, 245);
         delay(500);
     }
     else if(side == 1) //Left
     {
-         pwm->setPWM(SERVO_LB, 0, 170);
+         pwm->setPWM(SERVO_LB, 0, 190);
          delay(500);
     }
 }
@@ -84,7 +84,7 @@ void Pince::down(int side)
     }
     else if(side == 1) // Left
     {
-        pwm->setPWM(SERVO_LB, 0, 330);
+        pwm->setPWM(SERVO_LB, 0, 350);
         delay(500);
     }
 }

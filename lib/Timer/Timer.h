@@ -10,7 +10,7 @@ private:
     hw_timer_t * t = NULL; // Declare new timer
     
 public:
-    void setup(double gameTime); // Setup timer with specified game time in seconds
+    void setup(int gameTime); // Setup timer with specified game time in seconds
     void start(); // Start the timer
     bool gameOver(); // Check if the timer is ended (so the game)
 };

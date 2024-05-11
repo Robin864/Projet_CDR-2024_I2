@@ -4,10 +4,10 @@ bool gg = false; // good game
 
 void IRAM_ATTR endGame() // Interrupt function
 {
-    gg = true;
+    delay(1000000);
 }
 
-void Timer::setup(double gameTime)
+void Timer::setup(int gameTime)
 {
     t = timerBegin(TIMERID, TIMER_FREQ, true); // Specify an ID and the timer frequency different from 1,2,3, see UniBoard's schematic
     timerAttachInterrupt(t, &endGame, true); // Attach a fonction to the interruption

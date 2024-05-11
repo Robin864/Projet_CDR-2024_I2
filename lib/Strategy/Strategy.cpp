@@ -30,27 +30,65 @@ void Strategy::initialization()
 
 void Strategy::game()
 {
-    move.moveToXYAndRun(250, 250); //
-    move.turnOver(-90); // Place the pince RIGHT in front of the plants
-    move.moveToXYAndRun(350, -315); // Go to plant
-    move.moveToXYAndRun(0, -210); // Push the plants to align it
-    pince.grab(1); // Grab all the plants of the group using left pince
+    if (team == 'b')
+    {
+        move.moveToXYAndRun(250, 250); //
+        move.turnOver(-90); // Place the pince RIGHT in front of the plants
+        move.moveToXYAndRun(320, -315); // Go to plant
+        move.moveToXYAndRun(0, -210); // Push the plants to align it
+        pince.grab(1); // Grab all the plants of the group using left pince
 
-    move.moveToXYAndRun(600, 350); // Move to the second plants group
-    move.turnOver(180); // Place the pince in front of the plants
-    move.moveToXYAndRun(0, 300); // Push the plant to align it  
-    pince.grab(0);
+        move.moveToXYAndRun(600, 350); // Move to the second plants group
+        move.turnOver(180); // Place the pince in front of the plants
+        move.moveToXYAndRun(0, 300); // Push the plant to align it  
+        pince.grab(0);
 
-    move.moveToXYAndRun(800, 0);
-    move.turnOver(-90);
-    move.moveToXYAndRun(0, -400);
-    pince.ungrab(1); // Ungrab plants in the basket
+        move.moveToXYAndRun(850, -50); // Move near the jardiniere
+        move.turnOver(-90); // Turn over to select the left pince
+        move.moveToXYAndRun(0, -400); // Stick to the wall
+        pince.ungrab(1); // Ungrab plants in the basket
 
-    move.moveToXYAndRun(0, 150);
-    move.turnOver(-90);
-    move.moveToXYAndRun(1800, 750);
-    pince.ungrab(0);
+        move.moveToXYAndRun(0, 150); // Unstick the basket
+        move.turnOver(-90); // Turn over to have the right plan
+        move.moveToXYAndRun(0, 630); //go to the other basket
+        move.moveToXYAndRun(350, 0);// get ride of the pot 
+        move.moveToXYAndRun(0, 80);//get closer to the basket
+        pince.ungrab(0);
+        move.moveToXYAndRun(300, 0);//get ride of the pot for pami
+        move.moveToXYAndRun(0, -250);//get plus loin the basket
+        move.moveToXYAndRun(950, 0);//join the alignement of the end move 
+        move.moveToXYAndRun(0, 250);//join the end move 
+    }
+    else if (team == 'y')
+    {
+        move.moveToXYAndRun(250, -250); //
+        move.turnOver(90); // Place the pince RIGHT in front of the plants
+        move.moveToXYAndRun(320, 315); // Go to plant
+        move.moveToXYAndRun(0, 210); // Push the plants to align it
+        pince.grab(0); // Grab all the plants of the group using left pince
 
+        move.moveToXYAndRun(600, -350); // Move to the second plants group
+        move.turnOver(180); // Place the pince in front of the plants
+        move.moveToXYAndRun(0, -350); // Push the plant to align it  
+        pince.grab(1);
+
+        move.moveToXYAndRun(850, 110); // Move near the jardiniere
+        move.turnOver(90); // Turn over to select the left pince
+        move.moveToXYAndRun(-100, 400); // Stick to the wall
+        pince.ungrab(0); // Ungrab plants in the basket
+
+        move.moveToXYAndRun(0, -150); // Unstick the basket
+        move.turnOver(90); // Turn over to have the right plan
+        move.moveToXYAndRun(0, -700); //go to the other basket
+        move.moveToXYAndRun(340, 0);// get ride of the pot 
+        move.moveToXYAndRun(0, -80);//get closer to the basket
+        pince.ungrab(1);
+
+        move.moveToXYAndRun(300, 0);//get ride of the pot for pami
+        move.moveToXYAndRun(0, 250);//get plus loin the basket
+        move.moveToXYAndRun(950, 0);//join the alignement of the end move 
+        move.moveToXYAndRun(0, -250);//join the end move 
+    }
 
 
 }

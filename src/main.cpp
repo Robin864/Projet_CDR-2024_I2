@@ -7,7 +7,6 @@
 #include "Movement.h" // Bot's movements
 #include "Position.h" // Position management
 #include "Strategy.h" // Strategy
-#include "Timer.h"
 #include "Pince.h"
 
 #define INIT_PIN PIN::Inputs::btn2
@@ -15,7 +14,6 @@
 #define TIR_PIN PIN::Inputs::TIR
 
 //Strategy strat; // Initialize stategy
-Timer timer;
 Enemy lidar;
 Strategy strat; // Initialize stategy
 
@@ -25,7 +23,6 @@ bool initialized = false; // atHome
 void setup()
 {
     Serial.begin(115200);
-    timer.setup(100); // Game Time
 
     pinMode(TEAM_PIN, INPUT_PULLUP);
     pinMode(INIT_PIN, INPUT_PULLUP);
@@ -45,11 +42,11 @@ void setup()
 
 void loop()
 {
-    // strat.teamSelection(); // 1 = yellow, 0 = blue
-    // if(strat.team == 'b')
-    //     Serial.println("Blue team");
-    // else if(strat.team == 'y')
-    //     Serial.println("Yellow team");
+
+    if(strat.team == 'b')
+        Serial.println("Blue team");
+    else if(strat.team == 'y')
+        Serial.println("Yellow team");
 
     // if (digitalRead(INIT_PIN) != initState && !initialized)
     // {
@@ -67,9 +64,9 @@ void loop()
 
     Serial.println("Tirette pulled");
     // strat.homologation();
-    Serial.println("Pinces...");
+
     strat.game();
-    Serial.println("Pinces done...");
+
     // delay(10000);
 
     /*

@@ -197,10 +197,10 @@ void Movement::turnOver(float angle)
     rr.setMaxSpeed(SPEED);
 
     // Acceleration
-    fl.setAcceleration(ACCEL);
-    fr.setAcceleration(ACCEL);
-    rl.setAcceleration(ACCEL);
-    rr.setAcceleration(ACCEL);
+    fl.setAcceleration(ACCEL * 2);
+    fr.setAcceleration(ACCEL * 2);
+    rl.setAcceleration(ACCEL * 2);
+    rr.setAcceleration(ACCEL * 2);
     
     // Reset stepper position
     fl.setCurrentPosition(0);
